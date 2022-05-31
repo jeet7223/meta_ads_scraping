@@ -1,2 +1,2 @@
-headless_mode = False
+headless_mode = True
 testing_mode = True
