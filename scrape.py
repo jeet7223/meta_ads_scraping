@@ -4,6 +4,7 @@ import time
 
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
@@ -38,6 +39,25 @@ for item in keyword:
 
     p = WebDriverWait(driver, 20).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "_9cb_")))
     time.sleep(2)
+    if not configuration.testing_mode:
+        _len = driver.find_element(By.CLASS_NAME, "_9cb_").find_elements(By.CLASS_NAME, "_99s5")
+        previous_height = len(_len)
+
+        while True:
+            print("Please wait scrolling down to get all results......")
+            driver.find_element_by_tag_name('body').send_keys(Keys.END)
+            time.sleep(4)
+
+            new_height = driver.find_element(By.CLASS_NAME, "_9cb_").find_elements(By.CLASS_NAME, "_99s5")
+            new_height = len(new_height)
+            if new_height == previous_height:
+                break
+
+            previous_height = new_height
+    else:
+        driver.find_element_by_tag_name('body').send_keys(Keys.END)
+        time.sleep(4)
+
 
     try:
         data = driver.find_element(By.CLASS_NAME, "_9cb_").find_elements(By.CLASS_NAME, "_99s5")
