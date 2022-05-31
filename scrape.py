@@ -40,3 +40,7 @@ for cards in data:
     print("URL : {}".format(card_url))
     print("===================================")
     time.sleep(1)
+
+
+
+#Code by Jeet
