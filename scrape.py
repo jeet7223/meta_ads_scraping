@@ -1,12 +1,14 @@
-#Code By dev1
+# Code By dev1
 import time
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
+
 import configuration
 
+# TO customize Browser Capablities The bellow codes "options"
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized")
 options.add_argument("window-size=1920,1080")
@@ -22,15 +24,15 @@ options.add_argument('--disable-dev-shm-usage')
 options.add_experimental_option("useAutomationExtension", False)
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option("excludeSwitches", ["enable-logging"])
-driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 driver.implicitly_wait(5)
 
-driver.get("https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=Stock%20Market&search_type=keyword_unordered&media_type=all")
+driver.get(
+    "https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q=Stock%20Market&search_type=keyword_unordered&media_type=all")
 
 p = WebDriverWait(driver, 20).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "_9cb_")))
 time.sleep(2)
-
 
 try:
     data = driver.find_element(By.CLASS_NAME, "_9cb_").find_elements(By.CLASS_NAME, "_99s5")
@@ -55,6 +57,4 @@ for cards in data:
     print("===================================")
     time.sleep(1)
 
-
-
-#Code by Jeet
+# Code by Jeet
