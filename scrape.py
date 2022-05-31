@@ -16,6 +16,7 @@ driver.maximize_window()
 p = WebDriverWait(driver, 20).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "_9cb_")))
 time.sleep(2)
 
+
 try:
     data = driver.find_element(By.CLASS_NAME, "_9cb_").find_elements(By.CLASS_NAME, "_99s5")
 except:
