@@ -150,10 +150,6 @@ for item in keyword:
             r"((?:\+\d{2}[-\.\s]??|\d{4}[-\.\s]??)?(?:\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4}))")
         try:
             contact_number = phone_regex.findall(phone_number_string)[0]
-            if "+" in contact_number:
-                pass
-            else:
-                contact_number = "+{}".format(contact_number)
         except:
             contact_number = None
 
