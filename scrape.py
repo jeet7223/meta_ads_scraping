@@ -79,7 +79,16 @@ for item in keyword:
 
         print("Name : {}".format(name))
         print("URL : {}".format(card_url))
-        print("===================================")
+
+        # Code to open About us in new Tab
+        driver.execute_script('''window.open("{}","_blank");'''.format(card_url))
+        time.sleep(1)
+        driver.switch_to.window(driver.window_handles[1])
+        time.sleep(3)
+        # Code Here
+        driver.close()
+        time.sleep(1)
+        driver.switch_to.window(driver.window_handles[0])
         time.sleep(1)
 
-    # Code by Jeet
+
