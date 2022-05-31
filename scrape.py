@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 
+
 # Chrome
 driver = webdriver.Chrome(ChromeDriverManager().install())
 driver.implicitly_wait(5)
