@@ -23,7 +23,7 @@ if option_ans == "Y" or option_ans == "y":
         # creating a csv writer object,
         csvwriter = csv.writer(csvfile)
         # writing the data rows
-        csvwriter.writerows([["Page Name","Page Address","Email","Contact","Website Address"]])
+        csvwriter.writerows([["Keyword","Page Name","Page Address","Email","Contact","Website Address"]])
 
 
 # TO customize Browser Capablities The bellow codes "options"
@@ -114,6 +114,15 @@ for item in keyword:
                     break
                 else:
                     site_url = None
+
+                if site_url is None:
+                    for _item in link_data:
+                        website_data_string = _item.text
+                        if ".com" in website_data_string and "facebook" not in website_data_string:
+                            site_url = website_data_string
+                            break
+                        else:
+                            site_url = None
         except:
             site_url = None
 
@@ -163,7 +172,7 @@ for item in keyword:
                 # creating a csv writer object,
                 csvwriter = csv.writer(csvfile)
                 # writing the data rows
-                csvwriter.writerow([name, card_url, email, contact_number, site_url])
+                csvwriter.writerow([item[0],name, card_url, email, contact_number, site_url])
         counter = counter + 1
         driver.close()
         time.sleep(1)
