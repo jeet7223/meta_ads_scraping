@@ -34,7 +34,7 @@ driver.implicitly_wait(5)
 df = pd.read_csv("keywords.csv")
 keyword = df.values
 for item in keyword:
-    driver.get("https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={}&search_type=keyword_unordered&media_type=all".format(item))
+    driver.get("https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=ALL&q={}&search_type=keyword_unordered&media_type=all".format(item[0]))
 
     p = WebDriverWait(driver, 20).until(expected_conditions.presence_of_element_located((By.CLASS_NAME, "_9cb_")))
     time.sleep(2)
